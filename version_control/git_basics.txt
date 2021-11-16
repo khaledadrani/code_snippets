@@ -1,0 +1,100 @@
+#source: https://rogerdudler.github.io/git-guide/; https://developer.ibm.com/tutorials/d-learn-workings-git/
+
+#create a new repository
+git init
+
+#checkout a repository
+git clone /path/to/repository (local or also ssh/http)
+
+#workflow: get working directory
+echo $( cd $(git rev-parse --show-cdup); pwd)
+
+#workflow: get index (stage): the index represents what is being tracked,
+git ls-files --stage 
+
+
+#routine 
+
+git pull origin master?
+
+git status
+
+git add .
+
+git commit -m "message"
+
+git push origin master?
+
+#checkout: checks out a branch from repository into the working directory
+git checkout feature1
+git checkout -b feature2
+
+#logging
+git log
+
+#list modified files and differences
+git status
+git diff
+
+#create branches
+git branch <branchname>
+git checkout <branchname>
+
+OR 
+
+git checkout -b <branchname>
+
+#stage files (or add)
+git add 
+
+#merging: 
+
+git checkout <mainbranch>
+git merge <featurebranch>
+
+#Fast forward merge
+''' no changes happened to the main branch'''
+
+#No-conflict merge
+''' changes for each branch are affecting different files'''
+
+#conflic-merging
+git merge -abort 
+
+#git visualize tree, branching
+'''
+check https://github.com/crc8/GitVersionTree, 
+check https://stackoverflow.com/questions/1838873/visualizing-branch-topology-in-git
+'''
+git log --graph --decorate --oneline
+git log --graph --decorate --full-history --all --color --oneline
+
+#rebasing
+git rebase
+
+#cherry-picking: copy, does not merge or rebase (change HEAD pointer)
+git cherry-pick branchname
+
+#revert (almost reverse of cherry-picking), revert to state previous as a new commit
+git revert 
+
+#reduce merge conflicts
+'''
+https://stackoverflow.com/questions/13444398/how-to-minimize-git-merge-conflicts
+'''
+advocate for branch per feature, isolate tasks
+The number one reason for merge conflicts is the time between each merge.
+
+#add remote repo reference
+git remote add
+
+#pulling
+git fetch
+git merge
+OR
+git pull origin branch
+
+#pushing changes
+git push
+
+
